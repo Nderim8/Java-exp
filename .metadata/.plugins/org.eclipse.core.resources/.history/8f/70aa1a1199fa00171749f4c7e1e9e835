@@ -1,0 +1,30 @@
+<html>
+
+<body>
+
+<h3>Hello World of Java!</h3>
+
+The time on the server is <%= new java.util.Date() %>
+<br>
+Converting a String to uppercase -> <%= new String("Hello Word!").toUpperCase() %>
+<br>
+Converting a String to lowercase -> <% ("HELLO UNIVERSE!").toLowerCase(); %>
+<br>
+50*15=<%= 50*15%>
+<br>
+Is 159 > 15*15 ? <%= 159 > 15*15 %>
+<br>
+<% for(int i=1; i<=5; i++){
+	out.println("<br/>Test: "+ i);
+} %>
+
+<%! String makeItLower(String data){
+	return data.toLowerCase();
+  }	
+ %>
+ <br>
+ Hello World in lowercase -> <%= makeItLower("Hello World!") %>
+
+</body>
+
+</html>

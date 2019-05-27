@@ -1,0 +1,20 @@
+<html>
+<body>
+<form action="save-phonebook.jsp">
+<div align="center">
+<h1>Phone Book Manager</h1>
+<p>
+Firstname : <input type="text" name="firstname"><br><br>
+Lastname : <input type="text" name="lastname"><br><br>
+Type of number : <select name="type">
+				<option>WORK</option>
+				<option>CELL PHONE</option>
+				<option>HOME</option>
+		  </select><br><br>
+Number : <input type="text" name="number"><br><br>
+<p><input type="submit" value="Save Contact"></p>
+
+</div>
+</form>
+</body>
+</html>

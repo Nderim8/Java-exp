@@ -1,0 +1,10 @@
+<html>
+<body>
+<h3> Training Portal </h3>
+<!-- Read the favourite programming languages. -->
+// the default cookie... if there is no cookie
+String favLang = "JAVA";
+
+
+</body>
+</html>

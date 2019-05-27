@@ -1,0 +1,22 @@
+package com.acme;
+
+public class Pet {
+
+	@GenAsPersistable(superclass = Object.class, interfaces = { ContentHolder.class , Ownable.class } ,
+	properties= {
+			@GeneratedProperty(name="name", type=String.class,
+					columnProperties = @ColumnProperties(index=true),
+			constraints = @PropertyConstraints(required = true, upperLimit=60)),
+					@GeneratedProperty(name="kind", type = PetKind.class,
+					constraints = PropertyConstraints(upperLimit=40))
+	} 
+	)
+	public static Pet newPet() {
+		
+		final Pet instance = new Pet();
+		
+		
+		return instance;
+	}
+	
+}

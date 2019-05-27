@@ -1,0 +1,25 @@
+<html>
+<body>
+
+<form action="student-radio-response.jsp">
+
+First name : <input type="text" name="firstname">
+<br><br>
+Last name : <input type="text" name="lastname">
+<br><br>
+Favourite Programming Language : <input type="radio" name="favouriteLanguage" value="Java">JAVA
+Favourite Programming Language : <input type="radio" name="favouriteLanguage" value="C">C
+Favourite Programming Language : <input type="radio" name="favouriteLanguage" value="C++">C++
+Favourite Programming Language : <input type="radio" name="favouriteLanguage" value="PYTHON">PYTHON
+Favourite Programming Language : <input type="radio" name="favouriteLanguage" value="PHP">PHP
+Favourite Programming Language : <input type="radio" name="favouriteLanguage" value="RUBY">RUBY
+Favourite Programming Language : <input type="radio" name="favouriteLanguage" value="SWIFT">SWIFT
+Favourite Programming Language : <input type="radio" name="favouriteLanguage" value="C#">C#
+
+
+<br><br> 
+<input type="submit" value="Submit"/>
+
+</form>
+</body>
+</html>

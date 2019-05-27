@@ -1,0 +1,42 @@
+package tic_tac_toe;
+
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+
+public class Tic_Tac_Toe extends JFrame {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1039061337678410742L;
+
+	public Tic_Tac_Toe(String title) {
+
+		super(title);
+
+		Board board = new Board();
+		setContentPane(board);
+		setResizable(false);
+		setLocation(400, 100);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setSize(800, 800);
+		pack();
+		setVisible(true);
+
+	}
+
+	public static void main(String[] args) {
+
+		Runnable r = new Runnable() {
+			@Override
+			public void run() {
+				new Tic_Tac_Toe("Tic_Tac_Toe");
+			}
+		};
+		// (EventQueue) Klase e pavarur qe rradhit eventet
+		EventQueue.invokeLater(r);
+
+	}
+
+}

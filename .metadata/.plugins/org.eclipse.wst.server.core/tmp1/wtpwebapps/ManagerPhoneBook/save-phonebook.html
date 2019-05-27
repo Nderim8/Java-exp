@@ -1,0 +1,31 @@
+<%@ page import="sample.*"%>
+<html>
+
+<body>
+	<%
+		String fname = request.getParameter("firstname");
+	
+		String lname = request.getParameter("lastname");
+		String type = request.getParameter("type");
+		String number = request.getParameter("number");
+		Main m = new Main();
+		m.createContact(fname, lname, type, number);
+		m.printAllData();
+		
+	%>
+
+	<ol>
+		<li>Firstname:<%=fname%></li>
+		<li>Lastname :<%=lname%></li>
+		<li>Type of number :<%=type%></li>
+		<li>Number :<%=number%></li>
+	</ol>
+	
+	<form>
+	<button formaction="view-allcontacts.jsp"> View All </button>
+	<a href="register-phonebook.html"> Go Back</a>
+	</form>
+
+</body>
+
+</html>

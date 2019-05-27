@@ -1,0 +1,88 @@
+package gui;
+
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.Timer;
+
+public class MovingRectangle extends JPanel  implements ActionListener
+{
+	private int x = 0;
+	private int y = 0;
+	private int width = 50;
+	private int height = 50;
+	private final static int titlePanelSize = 20;
+	private final static int WIDTH = 500 , HEIGHT = 520;
+
+	private int width1 = 50;
+	private int height1 = 50;
+	private int x1 = WIDTH-width1;
+	private int y1 = 0;
+	
+	
+	
+	private int time = 0;
+	
+	private int velX = 2, velY = 2;
+	
+	Timer timer = new Timer(5, this);
+	
+	public void paintComponent(Graphics g)
+	{
+		super.paintComponent(g);
+		
+		g.setColor(Color.black);
+		g.fillRect(x, y, width, height);
+		g.setColor(Color.red);
+		g.fillRect(x1, y1, width1, height1);
+		
+		timer.start();
+		g.drawString("Timer : " + time , WIDTH/2 - 40, 10);
+	}
+	@Override
+	public void actionPerformed(ActionEvent e)
+	{
+		repaint();
+		time++;
+		if(x < 0 || x > WIDTH - width )  
+		  velX = -velX;
+		
+		    x = x + velX;
+		
+		if(y < 0 || y > HEIGHT - height - titlePanelSize )  // 20 is the height of the north title panel
+			  velY = -velY;
+		
+			y = y + velY;
+		
+		
+		
+	}
+	
+	
+	public static void main(String[]args)
+	{
+		MovingRectangle rect = new MovingRectangle();
+		MovingRectangle rect1 = new MovingRectangle();
+		
+		JFrame frame = new JFrame();
+		frame.setTitle("Moving Rectangle");
+		frame.setSize(WIDTH, HEIGHT);
+		frame.setResizable(false);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setVisible(true);
+		frame.add(rect);
+		frame.add(rect1);
+		
+		
+	}
+
+
+
+}
+
+
+

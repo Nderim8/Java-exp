@@ -1,0 +1,242 @@
+package tic_tac_toe;
+
+import java.awt.BasicStroke;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+
+import javax.swing.JButton;
+import javax.swing.JComponent;
+
+
+
+public class Board extends JComponent {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7180757913600688801L;
+	private int x = 100;
+	private int y = 100;
+	private int width = 500;
+	private int height = 520;
+    private boolean player1, player2;
+    private boolean redPlayerWin, bluePlayerWin;
+	
+	private final static int SQUAREDIM = 100;
+	private final int BOARDDIM = 5 * SQUAREDIM;
+	private Dimension dimPrefSize;
+	
+	private ArrayList<Square> squares; 
+	private Square square;
+    private JButton resetButton;
+
+	public Board() {
+
+		player1 = true;
+		player2 = false;
+		squares = new ArrayList<Square>();
+		dimPrefSize = new Dimension(width , height );
+
+		
+			square = new Square(x+(0*SQUAREDIM), y, SQUAREDIM, SQUAREDIM, true, null);
+			squares.add(square);
+			square = new Square(x+(1*SQUAREDIM), y, SQUAREDIM, SQUAREDIM, true, null);
+			squares.add(square);
+			square = new Square(x+(2*SQUAREDIM), y, SQUAREDIM, SQUAREDIM, true, null);
+			squares.add(square);
+			
+			square = new Square(x+(0*SQUAREDIM), y+(1*SQUAREDIM), SQUAREDIM, SQUAREDIM, true, null);
+			squares.add(square);
+			square = new Square(x+(1*SQUAREDIM), y+(1*SQUAREDIM), SQUAREDIM, SQUAREDIM, true, null);
+			squares.add(square);
+			square = new Square(x+(2*SQUAREDIM), y+(1*SQUAREDIM), SQUAREDIM, SQUAREDIM, true, null);
+			squares.add(square);
+			
+			square = new Square(x+(0*SQUAREDIM), y+(2*SQUAREDIM), SQUAREDIM, SQUAREDIM, true, null);
+			squares.add(square);
+			square = new Square(x+(1*SQUAREDIM), y+(2*SQUAREDIM), SQUAREDIM, SQUAREDIM, true, null);
+			squares.add(square);
+			square = new Square(x+(2*SQUAREDIM), y+(2*SQUAREDIM), SQUAREDIM, SQUAREDIM, true, null);
+			squares.add(square);
+			
+			
+		 resetButton = new JButton("Reset");
+		 resetButton.setBounds(x+SQUAREDIM, y+SQUAREDIM*3+10, 100, 40);
+		 resetButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				for( Square sqr : squares) {
+					sqr.setFigure(null);
+				}
+				player1 = true;
+				player2 = false;
+				
+				redPlayerWin = false;
+				bluePlayerWin = false;
+				repaint();
+			}
+		});
+		 add(resetButton);
+		
+		addMouseListener(new MouseAdapter()
+        {      
+
+           @Override
+           public void mousePressed(MouseEvent me)
+           {
+        	   
+        	   
+           }
+           
+           @Override
+			public void mouseReleased(MouseEvent me) {
+        	   
+        	 if(me.getButton() == 1)
+        	 {
+				for (Square sqr : squares) {
+					if ( me.getX() >= sqr.getX() && me.getX() <= sqr.getX() + sqr.getWidth()
+							&& me.getY() >= sqr.getY() && me.getY() <= sqr.getY() + sqr.getHeight() && sqr.getFigure() == null) {
+						System.out.println("Works");
+						if(player1) {
+							System.out.println("Works2");
+							sqr.setFigure("circle");
+                           player1 = false;
+                           player2 = true;
+                           break;
+						}
+						else if(player2) {
+							System.out.println("Works3");
+							sqr.setFigure("x");
+                           player1 = true;
+                           player2 = false;
+                           break;
+						}
+						
+					}
+
+				} // end for
+
+					if ((squares.get(0).getFigure() == "circle" && squares.get(1).getFigure() == "circle"
+							&& squares.get(2).getFigure() == "circle")
+							|| (squares.get(3).getFigure() == "circle" && squares.get(4).getFigure() == "circle"
+									&& squares.get(5).getFigure() == "circle")
+							|| (squares.get(6).getFigure() == "circle" && squares.get(7).getFigure() == "circle"
+									&& squares.get(8).getFigure() == "circle")
+							|| (squares.get(0).getFigure() == "circle" && squares.get(4).getFigure() == "circle"
+									&& squares.get(8).getFigure() == "circle")
+							|| (squares.get(2).getFigure() == "circle" && squares.get(4).getFigure() == "circle"
+									&& squares.get(6).getFigure() == "circle")) {
+
+					  redPlayerWin = true;
+				}
+					else if ((squares.get(0).getFigure() == "x" && squares.get(1).getFigure() == "x"
+							&& squares.get(2).getFigure() == "x")
+							|| (squares.get(3).getFigure() == "x" && squares.get(4).getFigure() == "x"
+									&& squares.get(5).getFigure() == "x")
+							|| (squares.get(6).getFigure() == "x" && squares.get(7).getFigure() == "x"
+									&& squares.get(8).getFigure() == "x")
+							|| (squares.get(0).getFigure() == "x" && squares.get(4).getFigure() == "x"
+									&& squares.get(8).getFigure() == "x")
+							|| (squares.get(2).getFigure() == "x" && squares.get(4).getFigure() == "x"
+									&& squares.get(6).getFigure() == "x")) {
+						bluePlayerWin = true;
+					}
+				
+        	 } // end if button type check
+        	 
+				repaint();
+			}
+           
+         });
+		
+	}
+
+	@Override
+	public Dimension getPreferredSize() {
+		return dimPrefSize;
+	}
+
+	protected void paintComponent(Graphics g) {
+
+		Graphics2D g2 = (Graphics2D) g;
+		g2.setStroke(new BasicStroke(3));
+		for(int i=0; i<3; i++)
+		{
+			g2.drawRect(x+(i*SQUAREDIM), y, SQUAREDIM, SQUAREDIM);
+			g2.drawRect(x+(i*SQUAREDIM), y+SQUAREDIM, SQUAREDIM, SQUAREDIM);
+			g2.drawRect(x+(i*SQUAREDIM), y+SQUAREDIM*2, SQUAREDIM, SQUAREDIM);
+		}
+		
+		
+		for(Square sqr : squares) {
+			
+			if (sqr.getFigure() == "circle") {
+				g2.setColor(Color.red);
+				g2.drawOval(sqr.getX(), sqr.getY(), sqr.getWidth(), sqr.getHeight());
+			}
+			else if(sqr.getFigure() == "x"){
+				g2.setColor(Color.blue);
+				g2.drawLine(sqr.getX(), sqr.getY(), sqr.getX() + sqr.getWidth(), sqr.getY() + sqr.getHeight());
+				g2.drawLine(sqr.getX(), sqr.getY() + sqr.getHeight(), sqr.getX() + sqr.getWidth(), sqr.getY());
+			}
+		}
+         
+		g2.setColor(Color.black);
+	//	g2.drawString("Red player wins!!", x+SQUAREDIM, y-20);
+		if(redPlayerWin)
+			g2.drawString("Red player wins!!", x+SQUAREDIM, y-20);
+		else if(bluePlayerWin)
+			g2.drawString("Blue player wins!!", x+SQUAREDIM, y-20);
+		
+	}
+	
+	class Square{
+		private int X, Y, Width, Height;
+		private boolean Free;
+		private String Figure;
+		public Square(int x, int y, int width, int height, boolean free, String figure) {
+			this.X = x;
+			this.Y = y;
+			this.Width = width;
+			this.Height = height;
+			this.Free = free;
+			this.Figure = figure;
+		}
+		public String getFigure() {
+			return Figure;
+		}
+		public void setFigure(String figure) {
+			Figure = figure;
+		}
+		public int getX() {
+			return X;
+		}
+		public int getY() {
+			return Y;
+		}
+		public int getWidth() {
+			return Width;
+		}
+		public int getHeight() {
+			return Height;
+		}
+		public boolean isFree() 
+		{
+			return Free;
+		}
+		public void setFree(boolean free) 
+		{
+			this.Free = free;
+		}
+	}
+
+}

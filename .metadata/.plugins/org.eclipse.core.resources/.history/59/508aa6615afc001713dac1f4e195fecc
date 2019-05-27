@@ -1,0 +1,14 @@
+
+<%@ page import="sample.*" %>
+<html>
+
+<body>
+<%
+String fname = request.getP("firstname");
+  Main m= new Main();
+  m.createContact(fname,"abedini", "cell", "21212128");
+  m.printAllData();
+%>
+</body>
+
+</html>

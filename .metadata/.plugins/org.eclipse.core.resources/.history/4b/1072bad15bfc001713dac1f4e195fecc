@@ -1,0 +1,18 @@
+
+<%@ page import="sample.*" %>
+<html>
+
+<body>
+<%
+String fname = request.getParameter("firstname");
+String fname = request.getParameter("lastname");
+String fname = request.getParameter("stname");
+String fname = request.getParameter("firstname");
+  Main m= new Main();
+  m.createContact(fname,"abedini", "cell", "21212128");
+  m.printAllData();
+%>
+fghjk<%=fname %>
+</body>
+
+</html>

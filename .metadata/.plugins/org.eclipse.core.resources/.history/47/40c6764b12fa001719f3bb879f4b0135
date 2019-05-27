@@ -1,0 +1,13 @@
+<html>
+
+<body>
+
+<h3>Hello World of Java!</h3>
+
+The time on the server is <%= new java.util.Date() %>
+<br>
+Converting a String to uppercase -> <%= new String("Hello Word!").toUpperCase() %>
+Converting a String to lowercase -> <% new String("HELLO UNIVERSE!").toLowerCase() %>
+</body>
+
+</html>

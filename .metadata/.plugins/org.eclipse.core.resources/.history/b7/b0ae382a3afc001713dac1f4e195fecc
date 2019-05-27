@@ -1,0 +1,9 @@
+<%@ page import="sample.*" %>
+<html>
+
+<body>
+
+Let's make some tests : <%= sample.Main.createContact()%>
+</body>
+
+</html>

@@ -1,0 +1,9 @@
+<html>
+<body>
+<form action="student-response.jsp"></form>
+First name : <input type="text" name="firstname">
+<br><br>
+Last name : <input type="text" name="lastname"> 
+/form>
+</body>
+</html>

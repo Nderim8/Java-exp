@@ -1,0 +1,42 @@
+package tic_tac_toe;
+
+import java.awt.Dimension;
+import java.awt.Graphics;
+
+import javax.swing.JComponent;
+
+public class Board extends JComponent {
+
+	private int x = 0;
+	private int y = 0;
+	private int width = 600;
+	private int height = 600;
+	
+	private final static int SQUAREDIM = 50;
+	private final int BOARDDIM = 3 * SQUAREDIM;
+	private Dimension dimPrefSize;
+	
+	public Board() {
+
+
+		dimPrefSize = new Dimension(BOARDDIM + 4*SQUAREDIM, BOARDDIM + 3*SQUAREDIM);
+		
+	}
+	
+	@Override
+	   public Dimension getPreferredSize()
+	   {
+	      return dimPrefSize;
+	   }
+	
+	 protected void paintComponent(Graphics g)
+	 {
+		 
+		 g.drawRect(x, y, width/3, height/3);
+		 
+		 
+		 
+		 
+	 }
+	
+}

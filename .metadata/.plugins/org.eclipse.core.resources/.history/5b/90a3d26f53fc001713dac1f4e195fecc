@@ -1,0 +1,12 @@
+
+<%@ page import="sample.*" %>
+<html>
+
+<body>
+<%
+  Main m= new Main();
+  tc.testMethod();
+%>
+</body>
+
+</html>

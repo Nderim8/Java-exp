@@ -1,0 +1,12 @@
+<html>
+<body>
+<h3> Training Portal </h3>
+<!-- Read the favourite programming languages. -->
+// the default... if there are no cookies
+String favLang = "JAVA";
+//Get the cookies from the browser request
+Cookies theCookies = request.getCookies();
+
+
+</body>
+</html>

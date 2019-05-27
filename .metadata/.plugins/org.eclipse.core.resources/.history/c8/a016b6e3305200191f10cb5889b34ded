@@ -1,0 +1,115 @@
+package tic_tac_toe;
+
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+
+import javax.swing.JComponent;
+
+import com.sun.org.apache.bcel.internal.generic.NEW;
+
+public class Board extends JComponent {
+
+	private int x = 0;
+	private int y = 0;
+	private int width = 500;
+	private int height = 520;
+    private boolean player1 = true, player2 = false;
+	
+	private final static int SQUAREDIM = 100;
+	private final int BOARDDIM = 5 * SQUAREDIM;
+	private Dimension dimPrefSize;
+	
+	private ArrayList<Square> squares = new ArrayList<Square>();
+	private Square square;
+
+	public Board() {
+
+		dimPrefSize = new Dimension(width , height );
+
+		for(int i=0; i<3; i++) 
+		{
+			square = new Square(x+(i*SQUAREDIM), y, SQUAREDIM, SQUAREDIM, true);
+			squares.add(square);
+			square = new Square(x+(i*SQUAREDIM), y+SQUAREDIM, SQUAREDIM, SQUAREDIM, true);
+			squares.add(square);
+			square = new Square(x+(i*SQUAREDIM), y+SQUAREDIM*2, SQUAREDIM, SQUAREDIM, true);
+			squares.add(square);
+			
+		
+		}
+		
+		addMouseListener(new MouseAdapter()
+        {      
+
+           @Override
+           public void mousePressed(MouseEvent me)
+           {
+        	   
+        	   
+           }
+           
+           @Override
+           public void mouseReleased(MouseEvent me)
+           {
+        	   for(Square : squares)
+        	   if(player1 && me.getX() >= square) 
+        	   {
+        		   
+        	   }
+        	   
+        	   
+           }
+           
+         });
+		
+	}
+
+	@Override
+	public Dimension getPreferredSize() {
+		return dimPrefSize;
+	}
+
+	protected void paintComponent(Graphics g) {
+
+		for(int i=0; i<3; i++)
+		{
+			g.drawRect(x+(i*SQUAREDIM), y, SQUAREDIM, SQUAREDIM);
+			g.drawRect(x+(i*SQUAREDIM), y+SQUAREDIM, SQUAREDIM, SQUAREDIM);
+			g.drawRect(x+(i*SQUAREDIM), y+SQUAREDIM*2, SQUAREDIM, SQUAREDIM);
+		}
+		
+
+	}
+	
+	class Square{
+		private int X, Y, Width, Height;
+		private boolean Free;
+		public Square(int x, int y, int width, int height, boolean free) {
+			this.X = x;
+			this.Y = y;
+			this.Width = width;
+			this.Height = height;
+			this.Free = free;
+		}
+		public int getX() {
+			return X;
+		}
+		public int getY() {
+			return Y;
+		}
+		public int getWidth() {
+			return Width;
+		}
+		public int getHeight() {
+			return Height;
+		}
+		public boolean isFree() 
+		{
+			return Free;
+		}
+	}
+
+}

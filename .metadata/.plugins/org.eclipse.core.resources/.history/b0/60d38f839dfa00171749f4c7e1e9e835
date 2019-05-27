@@ -1,0 +1,9 @@
+<html>
+<body>
+
+<h3> JSP build-In objects </h3>
+
+Request user-agent <%= request.getHeader("User Agent") %>
+
+</body>
+</html>

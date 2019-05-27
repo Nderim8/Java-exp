@@ -1,0 +1,330 @@
+package puzzle;
+
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.image.BufferedImage;
+import java.util.ArrayList;
+import java.util.Random;
+
+import javax.imageio.ImageIO;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.Timer;
+
+
+public class Puzzle extends JPanel implements ActionListener, KeyListener {
+	
+	Timer tm = new Timer(5,this);
+	int x=0, y=0, width=137, height=77;
+	private static boolean random = false;
+	private  int pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0, pos5 = 0, pos6 = 0, pos7 = 0, pos8 = 0, pos9 = 0;
+
+	
+	public static Puzzle p;
+	private Square square1, square2, square3, square4, square5, square6, square7, square8, square9;
+	private ArrayList<Square> squares = new ArrayList<Square>();
+	private BufferedImage sq1, sq2, sq3, sq4, sq5, sq6, sq7, sq8, sq9;
+	private JButton button;
+	
+	public Puzzle () {
+		
+/////////////////////////
+try
+{   
+BufferedImage spritesheet = ImageIO.read(getClass().getResourceAsStream(
+	  "/lion.jpg"));    //// 
+
+for(int i = 0; i < 3; i++)  
+{
+    if(i == 0) {
+    	sq1 = spritesheet.getSubimage(x, y,spritesheet.getWidth()/3 , spritesheet.getHeight()/3);
+    	sq2 = spritesheet.getSubimage(x, y+spritesheet.getHeight()/3, spritesheet.getWidth()/3 , spritesheet.getHeight()/3);
+    	sq3 = spritesheet.getSubimage(x, y+(spritesheet.getHeight()/3)*2, spritesheet.getWidth()/3 , spritesheet.getHeight()/3);
+    }
+    if(i == 1) {
+    	sq4 = spritesheet.getSubimage(x+spritesheet.getWidth()/3, y, spritesheet.getWidth()/3 , spritesheet.getHeight()/3);
+    	sq5 = spritesheet.getSubimage(x+spritesheet.getWidth()/3,spritesheet.getHeight()/3, spritesheet.getWidth()/3 , spritesheet.getHeight()/3);
+    	sq6 = spritesheet.getSubimage(x+spritesheet.getWidth()/3, y+(spritesheet.getHeight()/3)*2, spritesheet.getWidth()/3 , spritesheet.getHeight()/3);
+    }
+    if(i == 2) {
+    	sq7 = spritesheet.getSubimage(x+(spritesheet.getWidth()/3)*2, y, spritesheet.getWidth()/3 , spritesheet.getHeight()/3);
+    	sq8 = spritesheet.getSubimage(x+(spritesheet.getWidth()/3)*2, y+spritesheet.getHeight()/3, spritesheet.getWidth()/3 , spritesheet.getHeight()/3);
+    	sq9 = spritesheet.getSubimage(x+(spritesheet.getWidth()/3)*2, y+(spritesheet.getHeight()/3)*2, spritesheet.getWidth()/3 , spritesheet.getHeight()/3);
+    }
+	
+
+}
+} 
+catch(Exception e)
+{
+e.printStackTrace();
+}
+
+		
+      
+		
+		square1 = new Square(x, y, width, height, sq1, 0 , true);
+		squares.add(square1);
+		square2 = new Square(x, y+height, width, height, sq2, 1 , true);
+		squares.add(square2);
+		square3 = new Square(x, y+(height*2), width, height, sq3, 2 , true );
+		squares.add(square3);
+		square4 = new Square(x+width, y, width, height, sq4, 3, true );
+		squares.add(square4);
+		square5 = new Square(x+width, y+height, width, height, sq5, 4 , true);
+		squares.add(square5);
+		square6 = new Square(x+width, y+(height*2), width, height, sq6, 5 , true);
+		squares.add(square6);
+    	square7 = new Square(x+(width*2), y, width, height, sq7, 6 , true);
+		squares.add(square7);
+		square8 = new Square(x+(width*2), y+height, width, height, sq8, 7 , true);
+		squares.add(square8);
+		square9 = new Square(x+(width*2), y+(height*2), width, height, sq9, 8 , false);
+		squares.add(square9);
+		
+		
+     
+		JFrame jf = new JFrame("Puzzle");
+		jf.setVisible(true);
+		jf.setSize(800, 500);
+		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		jf.setResizable(false);
+		jf.addKeyListener(this);
+
+		jf.add(this);
+		
+		tm.start();
+		
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		// TODO Auto-generated method stub
+		
+		// repaint();
+	}
+	
+
+
+	@Override
+	public void keyPressed(KeyEvent e) {
+		// TODO Auto-generated method stub
+	
+      int nr = 0;
+		 if(e.getKeyCode() == KeyEvent.VK_LEFT) {
+		
+			 for(int i = 3; i < 9; i++) {
+				 
+		    	if(nr == 0)
+				 if(squares.get(i-3).getTaken() == false) {
+
+					 squares.get(i-3).setImage(squares.get(i).getImage());
+					 squares.get(i-3).setTaken(true);
+					 squares.get(i).setImage(null);
+					 squares.get(i).setTaken(false);
+	                 nr++;
+					 
+				  }
+				 
+			 } // end for
+
+       } // end if left
+		 
+		 if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
+				
+			 for(int i = 0; i < 6; i++) {
+				 
+				
+				 if(squares.get(i+3).getTaken() == false) {
+
+					 squares.get(i+3).setImage(squares.get(i).getImage());
+					 squares.get(i+3).setTaken(true);
+					 squares.get(i).setImage(null);
+					 squares.get(i).setTaken(false);
+	
+				  }
+				 
+			 } // end for
+
+       } // end if right
+		 
+		 if(e.getKeyCode() == KeyEvent.VK_DOWN) {
+				
+			 for(int i = 0; i < 9; i++) {
+		
+				 if( i!=0 && i!=3 && i!=6 )
+				 if(squares.get(i).getTaken() == false && squares.get(i).getX()==squares.get(i-1).getX() ) {
+
+					 squares.get(i).setImage(squares.get(i-1).getImage());
+					 squares.get(i).setTaken(true);
+					 squares.get(i-1).setImage(null);
+					 squares.get(i-1).setTaken(false);
+					 
+	
+				  }
+				 
+			 } // end for
+
+       } // end if down
+		 
+		 if(e.getKeyCode() == KeyEvent.VK_UP) {
+			 int nr1 = 0;	
+			 for(int i = 0; i < 9; i++) {
+		         
+				 if( nr1 == 0 && ( i!=2 && i!=5 && i!=8 ))
+				 if(squares.get(i).getTaken() == false && squares.get(i).getX()==squares.get(i+1).getX() ) {
+
+					 squares.get(i).setImage(squares.get(i+1).getImage());
+					 squares.get(i).setTaken(true);
+					 squares.get(i+1).setImage(null);
+					 squares.get(i+1).setTaken(false);
+					 nr1++;
+	
+				  }
+				 
+			 } // end for
+
+			 
+		
+            if(squares.get(0).getImage() == sq1 && squares.get(1).getImage() == sq2
+            	&& squares.get(2).getImage() == sq3 && squares.get(3).getImage() == sq4
+            	&& squares.get(4).getImage() == sq5 && squares.get(5).getImage() == sq6
+            	&& squares.get(6).getImage() == sq7 && squares.get(7).getImage() == sq8
+            	&& squares.get(8).getImage() == null ) {
+            	
+            	compleate = true;
+            	
+            }
+				 
+			
+				 
+			 
+       } // end if up
+
+			
+			Random rand = new Random();
+
+		 if(e.getKeyCode() == KeyEvent.VK_SPACE) {
+			 
+			
+					pos1 = rand.nextInt(8);
+					     pos2 = rand.nextInt(8);
+				         while(pos2 == pos1)
+				    	     pos2 = rand.nextInt(8);
+					     pos3 = rand.nextInt(8);
+					     while(pos3 == pos1 || pos3 == pos2)
+					    	 pos3 = rand.nextInt(8);
+				         pos4 = rand.nextInt(8);
+					     while(pos4 == pos1 || pos4 == pos2 || pos4 == pos3)
+					    	 pos4 = rand.nextInt(8);
+					 	 pos5 = rand.nextInt(8);
+					     while(pos5 == pos1 || pos5 == pos2 || pos5 == pos3 || pos5 == pos4)
+					    	 pos5 = rand.nextInt(8);
+						pos6 = rand.nextInt(8);
+					    while(pos6 == pos1 || pos6 == pos2 || pos6 == pos3 || pos6 == pos4 || pos6 == pos5)
+						     pos6 = rand.nextInt(8);
+						pos7 = rand.nextInt(8);
+						while(pos7 == pos1 || pos7 == pos2 || pos7 == pos3 || pos7 == pos4 || pos7 == pos5 || pos7 == pos6)
+					    	 pos7 = rand.nextInt(8);
+						pos8 = rand.nextInt(8);
+						while(pos8 == pos1 || pos8 == pos2 || pos8 == pos3 || pos8 == pos4 || pos8 == pos5 
+								|| pos8 == pos6 || pos8 == pos7)
+					    	 pos8 = rand.nextInt(8);
+						
+						pos9 = 8;
+					
+				
+						squares.get(pos1).setImage(sq1);
+						squares.get(pos2).setImage(sq2);
+						squares.get(pos3).setImage(sq3);
+						squares.get(pos4).setImage(sq4);
+						squares.get(pos5).setImage(sq5);
+						squares.get(pos6).setImage(sq6);
+						squares.get(pos7).setImage(sq7);
+						squares.get(pos8).setImage(sq8);
+						squares.get(pos9).setImage(null);
+			            
+						squares.get(pos9).setTaken(false);
+		 }
+		 
+
+		 repaint();
+	}
+
+	public void paintComponent(Graphics g) {
+		
+		super.paintComponent(g);
+
+	//////////////////
+		for(Square square: squares) {
+			
+			if(square.getImage() == null)
+				g.drawRect(square.getX(), square.getY(), square.getWidth(), square.getHeight());
+			else
+			g.drawImage(square.getImage().getScaledInstance(square.getWidth(), square.getHeight(), Image.SCALE_DEFAULT),
+					square.getX(), square.getY(), null );
+			
+		}
+		
+		
+		
+		/*	 g.drawImage(sq1.getScaledInstance(squares.get(pos1).getWidth(), squares.get(pos1).getHeight(), Image.SCALE_DEFAULT),
+					 squares.get(pos1).getX(), squares.get(pos1).getY(), null);
+			 
+			 g.drawImage(sq2.getScaledInstance(squares.get(pos2).getWidth(), squares.get(pos2).getHeight(), Image.SCALE_DEFAULT),
+					 squares.get(pos2).getX(), squares.get(pos2).getY(), null);
+		
+			 g.drawImage(sq3.getScaledInstance(squares.get(pos3).getWidth(), squares.get(pos3).getHeight(), Image.SCALE_DEFAULT),
+					 squares.get(pos3).getX(), squares.get(pos3).getY(), null);
+		
+			 g.drawImage(sq4.getScaledInstance(squares.get(pos4).getWidth(), squares.get(pos4).getHeight(), Image.SCALE_DEFAULT),
+					 squares.get(pos4).getX(), squares.get(pos4).getY(), null);
+			      
+			 g.drawImage(sq5.getScaledInstance(squares.get(pos5).getWidth(), squares.get(pos5).getHeight(), Image.SCALE_DEFAULT),
+					 squares.get(pos5).getX(), squares.get(pos5).getY(), null);
+		
+			 g.drawImage(sq6.getScaledInstance(squares.get(pos6).getWidth(), squares.get(pos6).getHeight(), Image.SCALE_DEFAULT),
+					 squares.get(pos6).getX(), squares.get(pos6).getY(), null);
+		
+			 g.drawImage(sq7.getScaledInstance(squares.get(pos7).getWidth(), squares.get(pos7).getHeight(), Image.SCALE_DEFAULT),
+					 squares.get(pos7).getX(), squares.get(pos7).getY(), null);
+			
+			 g.drawImage(sq8.getScaledInstance(squares.get(pos8).getWidth(), squares.get(pos8).getHeight(), Image.SCALE_DEFAULT),
+					 squares.get(pos8).getX(), squares.get(pos8).getY(), null);
+			
+			  g.drawRect(squares.get(pos9).getX(), squares.get(pos9).getY(), squares.get(pos9).getWidth(), squares.get(pos9).getHeight());
+			 g.drawImage(sq9.getScaledInstance(squares.get(pos9).getWidth(), squares.get(pos9).getHeight(), Image.SCALE_DEFAULT),
+					 squares.get(pos9).getX(), squares.get(pos9).getY(), null);
+	*/
+			
+		
+	}
+	
+	
+	@Override
+	public void keyReleased(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyTyped(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	public static void main(String[] args) {
+		
+		p = new Puzzle();
+	  
+		
+		
+	}
+	
+
+}

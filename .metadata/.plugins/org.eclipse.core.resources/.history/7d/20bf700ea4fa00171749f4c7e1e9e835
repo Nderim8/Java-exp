@@ -1,0 +1,8 @@
+<html>
+<body>
+<header><title> Student Confirmation Title </title></header>
+
+The student is confirmed : ${param.firstname} ${param.lastname}
+
+</body>
+</html>

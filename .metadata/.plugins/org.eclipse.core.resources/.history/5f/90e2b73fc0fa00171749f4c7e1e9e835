@@ -1,0 +1,28 @@
+<html>
+<head>
+<title>
+Personalize The Site
+</title>
+</head>
+
+<body>
+<form action="cookies-personalize-response.jsp">
+Select your favourite programming language :
+<select name="favouriteLanguage">
+<option>C</option>
+<option>C++</option>
+<option>C#</option>
+<option>JAVA</option>
+<option>PYTHON</option>
+<option>PHP</option>
+
+
+
+</select>
+
+
+</form>
+
+
+</body>
+</html>

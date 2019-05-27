@@ -1,0 +1,12 @@
+<html>
+<body>
+
+<form action="student-radio-response.jsp">
+First name : <input type="text" name="firstname">
+<br><br>
+Last name : <input type="text" name="lastname"> 
+<input type="submit" value="Submit"/>
+
+</form>
+</body>
+</html>

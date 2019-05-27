@@ -1,0 +1,97 @@
+package com.acme;
+
+class Solution {
+    public int solution(int[] A) {
+        // write your code in Java SE 8
+        
+        int smallest = 1;
+        boolean found = true;
+        while(found == false)
+        {
+        // find smallest number is the array
+        for(int i=0; i<=A.length-1; i++)
+        {
+            if(A[i] == smallest)
+            {
+                smallest = smallest++;
+            }else { found = false; }
+        }
+        }
+        
+     /*   
+        if(smallest == 1000000 || smallest < 0)
+        	smallest = 0;
+        
+        boolean exists = true;
+        int nextSmallest = 0;
+        
+        while(exists == true)
+        {
+        // check if smallest number+1 exists is the array
+        for(int i=0; i<=A.length-1; i++)
+        {
+    
+           
+           nextSmallest = smallest+1;
+            
+            if(A[i]==nextSmallest )
+            {
+                smallest = A[i];
+                exists = true;
+            }else
+            {
+                exists = false;
+            }
+             
+         } // for
+       
+            
+        }// while
+        
+     */
+        return smallest;
+        
+        
+    }
+    
+    //////////////////////////////
+    public int solution1(int N) {
+    	  int binaryGap = 0;
+
+    	    // remove trailing zeroes if not counted; credit to Peter Taylor
+    	    while (N % 2 == 0) {
+    	        N /= 2;
+    	    }
+
+    	    for (int j = 0; N > 0; N /= 2) {
+    	        if (N % 2 == 0) {
+    	            j++;
+    	        } else {
+    	            if (j > binaryGap) {
+    	                binaryGap = j;
+    	            }
+
+    	         //   j = 0;
+    	        }
+    	    }
+
+    	    return binaryGap;
+    }
+    
+    public static void main(String[] args){
+        
+        Solution test = new Solution();
+      //  int A[] = {1,3,6,4,1,2};
+      //    int A[] = {1,2,3};
+        int A[] = {2};
+        int a = test.solution(A);
+        
+        int x = 1000010001;
+        int b = test.solution1(x);
+        
+        System.out.println("Result = " + a);
+        
+        System.out.println("Result1 = " + b);
+        
+    }
+}

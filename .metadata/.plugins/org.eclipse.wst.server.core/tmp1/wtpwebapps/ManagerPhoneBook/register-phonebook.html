@@ -1,0 +1,53 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="css/register.css">
+<script src="https://use.fontawesome.com/e6d0d07df8.js"></script>
+</head>
+
+<body>
+
+	<form class="w3-container">
+		<div>
+			<h1 class="w3-center">Phone Book Manager</h1>
+			<div class="w3-bar w3-blue">
+				<a href="register-phonebook.html" class="w3-bar-item w3-button w3-padding-16">Home</a>
+				<a href="update-contact.html" class="w3-bar-item w3-button w3-padding-16">Update</a>
+				<a href="delete-contact.html" class="w3-bar-item w3-button w3-padding-16">Delete</a>
+				<a href="delete-all.jsp" class="w3-bar-item w3-button w3-padding-16">Delete All</a>
+				<a href="view-allcontacts.jsp" class="w3-bar-item w3-button w3-padding-16">List
+					of contacts</a>
+			</div>
+			<div class="register-form">
+			<p>
+				<label class="w3-text-black"><b>First Name</b></label> <input
+					class="w3-input w3-border " name="firstname" type="text">
+			</p>
+			<p>
+				<label class="w3-text-black"><b>Last Name</b></label> <input
+					class="w3-input w3-border" name="lastname" type="text">
+			</p>
+			<p>
+				<label class="w3-text-black"><b>Type of number :</b></label>
+				 <select
+					class="w3-input w3-border " name="type">
+					<option class="w3-text-brown">Work</option>
+					<option class="w3-text-brown">Cell phone</option>
+					<option class="w3-text-brown">Home</option></select>
+			</p>
+						<p>
+				 <label class="w3-text-black"><b>Number :</b></label> <input
+					class="w3-input w3-border" name="number" type="number">
+			</p>
+			<p>
+			<button formaction="save-phonebook.jsp"
+					class="w3-btn w3-block w3-green create-contact" style="width: 30%">Create
+					contact <i class="fa fa-plus-square" aria-hidden="true"></i></button>
+			</p>
+			
+			</div>
+			
+		</div>
+	</form>
+</body>
+</html>

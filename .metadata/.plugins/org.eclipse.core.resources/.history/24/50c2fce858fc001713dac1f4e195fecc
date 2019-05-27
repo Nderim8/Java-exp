@@ -1,0 +1,13 @@
+
+<%@ page import="sample.*" %>
+<html>
+
+<body>
+<%
+  Main m= new Main();
+  m.createContact("ornela","abedini", "cell", "21212128");
+  m.printAllData();
+%>
+</body>
+
+</html>

@@ -1,0 +1,13 @@
+127.0.0.1 - - [14/Feb/2018:10:36:04 +0100] "GET / HTTP/1.1" 404 1073
+0:0:0:0:0:0:0:1 - - [14/Feb/2018:10:36:05 +0100] "GET /ManagerPhoneBook/register-phonebook.html HTTP/1.1" 200 1883
+0:0:0:0:0:0:0:1 - - [14/Feb/2018:10:36:05 +0100] "GET /ManagerPhoneBook/css/register.css HTTP/1.1" 200 417
+0:0:0:0:0:0:0:1 - - [14/Feb/2018:10:36:29 +0100] "GET /ManagerPhoneBook/register-phonebook.html HTTP/1.1" 200 1883
+0:0:0:0:0:0:0:1 - - [14/Feb/2018:10:36:29 +0100] "GET /ManagerPhoneBook/css/register.css HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [14/Feb/2018:10:36:30 +0100] "GET /favicon.ico HTTP/1.1" 404 1084
+0:0:0:0:0:0:0:1 - - [14/Feb/2018:10:36:39 +0100] "GET /ManagerPhoneBook/view-allcontacts.jsp HTTP/1.1" 200 225
+0:0:0:0:0:0:0:1 - - [14/Feb/2018:10:36:44 +0100] "GET /ManagerPhoneBook/register-phonebook.html? HTTP/1.1" 200 1883
+0:0:0:0:0:0:0:1 - - [14/Feb/2018:10:37:09 +0100] "GET /ManagerPhoneBook/save-phonebook.jsp?firstname=jim&lastname=belushi&type=Cell+phone&number=699696969 HTTP/1.1" 200 369
+0:0:0:0:0:0:0:1 - - [14/Feb/2018:10:37:12 +0100] "GET /ManagerPhoneBook/view-allcontacts.jsp? HTTP/1.1" 200 300
+0:0:0:0:0:0:0:1 - - [14/Feb/2018:10:37:26 +0100] "GET /ManagerPhoneBook/delete-contact.html HTTP/1.1" 200 500
+0:0:0:0:0:0:0:1 - - [14/Feb/2018:10:37:41 +0100] "GET /ManagerPhoneBook/delete-contact.jsp?firstname=jim&lastname=belushi HTTP/1.1" 200 363
+0:0:0:0:0:0:0:1 - - [14/Feb/2018:10:37:46 +0100] "GET /ManagerPhoneBook/view-allcontacts.jsp? HTTP/1.1" 200 225
